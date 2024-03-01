@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Registro de Nueva Cita</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <style>
+    /* Estilos para centrar el contenido en la página */
+    h2 {
+      font-size: 30px; /* Ajusta el tamaño del encabezado para dispositivos móviles */
+      margin: 10px 0; /* Ajusta el margen del título */
+      font-family: "Poppins", sans-serif;
+    }
+    body { 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh; /* Altura mínima para ocupar la pantalla completa */
+      margin: 0;
+      background-color: #f0f0f0; /* Color de fondo de la página */
+    }
+    
+    /* Ajusta el contenedor principal */
+    .registration-container {
+      display: flex;
+      flex-direction: column; /* Cambia la dirección del diseño a columna para dispositivos móviles */
+      align-items: center;
+      width: 80%;
+      max-width: 1200px;
+      padding: 20px;
+    }
+    
+    /* Ajusta el ancho del formulario */
+    .registration-form {
+      width: 100%; /* Ocupa el ancho completo en dispositivos móviles */
+    }
+    
+    /* Ajusta los márgenes internos del formulario */
+    .registration-form .input-field {
+      margin-bottom: 20px;
+    }
+
+    /* Ajusta el margen inferior del campo de nombre del paciente */
+    .registration-form #nombre-paciente {
+      margin-bottom: 20px;
+    }
+
+    .registration-image {
+      width: 25%; /* Ocupa el ancho completo en dispositivos móviles */
+      max-height: 290px; /* Limita la altura de la imagen */
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      margin-top: 20px; /* Ajusta el espacio superior para dispositivos móviles */
+    }
+    
+    /* Ajusta el espacio entre el botón y el formulario */
+    .button-space {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="registration-container">
+    <div class="registration-form">
+      <h1>Registro de Nueva Dieta</h1> 
+    <img src="/PASTI/imagenes/healthy_10184079.png" alt="Imagen de Medicamento" class="registration-image"style="margin: auto; display: block;">
+  
+     
+      <form id="appointment-form">
+        <div class="input-field">
+          <label for="nombre-paciente">Nombre del Paciente</label>
+          <input type="text" id="nombre-paciente" name="nombre-paciente" required>
+        </div>
+        <div class="input-field">
+            <label for="tipo-dieta">Tipo de Dieta</label>
+            <input type="text" id="tipo-dieta" name="tipo-dieta" required>
+          </div>
+          <div class="input-field">
+            <label for="descripcion-dieta">Descripción de la Dieta</label>
+            <textarea id="descripcion-dieta" name="descripcion-dieta" rows="4" required></textarea>
+          </div>
+        
+        <!-- Formulario para agregar recordatorio -->
+        <h3>Agregar Recordatorio</h3>
+        <div class="input-field">
+          <label for="nombre-alarma">Nombre del Recordatorio</label>
+          <input type="text" id="nombre-alarma" name="nombre-alarma" required>
+        </div>
+        <div class="input-field">
+          <label for="hora">Hora</label>
+          <input type="text" id="hora" class="timepicker" required>
+        </div>
+        <div class="input-field">
+          <label>
+            <input type="checkbox" id="aplazar" />
+            <span>Aplazar Alarma</span>
+          </label><br><br>
+        </div>
+        <div class="input-field">
+          <label for="sonido-alarma">Sonido de Alarma</label><br>
+          <select id="sonido-alarma">
+            <option value="sonido1">Sonido 1</option>
+            <option value="sonido2">Sonido 2</option>
+            <option value="sonido3">Sonido 3</option>
+          </select>
+        </div>
+        <div class="input-field">
+          <label>
+            <input type="checkbox" id="leer-hora" />
+            <span>Leer la Hora en Voz Alta</span>
+          </label><br>
+        </div>
+        <div class="input-field">
+          <label for="repetir-dia">Repetir en Día(s)</label>
+          <input type="number" id="repetir-dia" min="1">
+        </div>
+        <div class="input-field">
+          <label for="dia-semana">Día de la Semana</label><br>
+          <select id="dia-semana">
+            <option value="" disabled selected>Selecciona un día</option>
+            <option value="lunes">Lunes</option>
+            <option value="martes">Martes</option>
+            <option value="miercoles">Miércoles</option>
+            <option value="jueves">Jueves</option>
+            <option value="viernes">Viernes</option>
+            <option value="sabado">Sábado</option>
+            <option value="domingo">Domingo</option>
+          </select>
+        </div>
+        
+        <button type="submit" class="btn waves-effect waves-light green">Registrar Dieta</button>
+        <div class="back-button right-align">
+          <a href="\PASTI\php/10-perfilpaciente.php" class="waves-effect waves-light btn green">Atrás</a>
+        </div>
+      </form>
+    </div>
+    <img src="/PASTI/imagenes/healthy_10184079.png" alt="Imagen de Medicamento" class="registration-image">
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const timePicker = document.querySelector('.timepicker');
+      const selectSonido = document.getElementById('sonido-alarma');
+      const selectDiaSemana = document.getElementById('dia-semana');
+      
+      M.Timepicker.init(timePicker, {
+        twelveHour: false // Formato de 24 horas
+      });
+      M.FormSelect.init(selectSonido);
+      M.FormSelect.init(selectDiaSemana);
+    });
+  </script>
+</body>
+</html>

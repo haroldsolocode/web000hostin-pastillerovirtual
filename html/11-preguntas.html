@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Preguntas Frecuentes - Ayuda</title>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+<body>
+  <div class="container">
+    <div class="center-align">
+      <img src="/PASTI/imagenes/pastilleroVirtualrecortado.jpeg" alt="Logo" class="logo" >
+      <style>
+        .logo {
+          max-width: 350px;
+          margin-top: 20px;
+        }
+      </style>
+    </div>
+
+<div class="container">
+  <h1 class="center-align">Preguntas Frecuentes</h1>
+  
+  <ul class="collapsible">
+    <li>
+      <div class="collapsible-header">¿Cómo registro una cuenta?</div>
+      <div class="collapsible-body"><span>Para registrarte, sigue los siguientes pasos...</span></div>
+    </li>
+    <li>
+      <div class="collapsible-header">¿Cómo cambiar mi contraseña?</div>
+      <div class="collapsible-body"><span>Para cambiar tu contraseña, sigue estos pasos...</span></div>
+    </li>
+    <li>
+      <div class="collapsible-header">¿Puedo acceder a mi cuenta desde varios dispositivos?</div>
+      <div class="collapsible-body"><span>Sí, puedes acceder a tu cuenta desde diferentes dispositivos...</span></div>
+    </li>
+    <!-- Agrega más preguntas y respuestas aquí -->
+  </ul>
+  
+  <h2 class="center-align" style="margin-top: 50px;">¿Tienes una pregunta?</h2>
+  <div class="row">
+    <div class="input-field col s12">
+      <textarea id="userQuestion" class="materialize-textarea"></textarea>
+      <label for="userQuestion">Escribe tu pregunta aquí</label>
+    </div>
+  </div>
+  
+  <div class="row center-align">
+    <button class="btn waves-effect waves-light" onclick="submitQuestion()">Enviar Pregunta</button>
+  </div>
+  
+  <div class="row center-align" style="margin-top: 30px;">
+    <a href="/PASTI/html/5-ayuda.html" class="btn waves-effect waves-light green logout-button">Volver</a>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var collapsibles = document.querySelectorAll('.collapsible');
+    var instances = M.Collapsible.init(collapsibles);
+  });
+  
+  function submitQuestion() {
+    var userQuestion = document.getElementById('userQuestion').value;
+    if (userQuestion.trim() !== '') {
+      // Agregar la pregunta del usuario a la lista de preguntas
+      var collapsibleList = document.querySelector('.collapsible');
+      var newCollapsible = document.createElement('li');
+      newCollapsible.innerHTML = `
+        <div class="collapsible-header">${userQuestion}</div>
+        <div class="collapsible-body"><span>La respuesta a esta pregunta estará disponible próximamente...</span></div>
+      `;
+      collapsibleList.appendChild(newCollapsible);
+      // Reiniciar el campo de entrada
+      document.getElementById('userQuestion').value = '';
+      M.updateTextFields(); // Actualizar etiquetas flotantes de Materialize
+    }
+  }
+</script>
+</body>
+</html>
+

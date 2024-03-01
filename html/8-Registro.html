@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Registro</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <style>
+     /* Ajuste para evitar la superposición de la etiqueta en campos de selección */
+     .input-field select {
+      height: 2.8rem;
+    }
+    .logo {
+      max-width: 150px;
+      margin-top: 20px;
+    }
+    .tarro {
+      max-width: 200px;
+      margin-top: 20px;
+    }
+
+    /* Estilo para hacer el botón de registro más grande */
+    .logout-button {
+      padding: 40px 40px; /* Ajusta el tamaño del botón */
+      font-size: 2rem; /* Ajusta el tamaño del texto del botón */
+    }
+    
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="center-align">
+    <img src="/PASTI/imagenes/pastillero3.jpg" alt="Logo" class="logo">
+   
+  </div>
+  <h1 class="center-align">Registro</h1>
+  
+  <form action="\PASTI\php/guardar_datos.php" method="post" >
+    <div class="row">
+    
+      <div class="input-field col s6">
+        <input id="nombres" type="text" name="nombres" class="validate" pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+" required>
+        <label for="nombres">Nombres (solo letras)</label>
+      </div>
+      <div class="input-field col s6">
+        <input id="apellidos" type="text" name="apellidos" class="validate" pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+" required>
+        <label for="apellidos">Apellidos (solo letras)</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+        <input id="birthdate" type="date" name="fecha_nacimiento" class="validate" required>
+        <label for="birthdate">Fecha de Nacimiento</label>
+      </div>
+      <div class="input-field col s6">
+        <select id="nacionalidad" name="nacionalidad"  class="validate browser-default" required >
+          <option value="" disabled selected>Selecciona tu nacionalidad </option>
+          <option value="Colombia">Colombia</option>
+          <option value="Venezuela">Venezuela</option>
+          <option value="Ecuador">Ecuador</option>
+          <option value="Peru">Peru</option> 
+          <option value="Chile">Chile</option>
+          <option value="Argentina">Argentina</option>
+          <option value="Uruguay">Uruguay</option>
+          <option value="España">España</option>
+          <!-- Agrega más opciones de países aquí -->
+        </select>
+       
+      
+      </div>
+    </div>
+    
+    <div class="input-field col s12">
+      <select id="sexo" name="sexo"  class="validate browser-default" required>
+        <option value="" disabled selected>Selecciona tu sexo</option>
+        <option value="masculino">Masculino</option>
+        <option value="femenino">Femenino</option> 
+      </select>
+      
+      
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="email" type="email" name="correo" class="validate" required>
+        <label for="email">Correo electrónico</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="mobile" type="tel" name="movil" class="validate"  pattern="\+[0-9]+"  required>
+        <label for "mobile">Ingrese el numero del indicativo del país+ el numero del celular (ejemplo: colombia +573146670770)</label>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="username" type="text" name="username" class="validate" required>
+          <label for "username">Ingrese nombre de Usuario</label>
+        </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="password" type="password" name="contrasena" class="validate" required>
+        <label for="password">Contraseña</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="confirm-password" type="password" class="validate" required>
+        <label for="confirm-password">Confirmar contraseña</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s6">
+        <!-- Imagen del tarro en el extremo izquierdo -->
+        <img src="/PASTI/imagenes/tarro pastillas.jpg" alt="Tarro" class="tarro left-align">
+      </div>
+      <div class="col s6">
+        <!-- Imagen del tarro en el extremo derecho -->
+        <img src="/PASTI/imagenes/tarro pastillas.jpg" alt="Tarro" class="tarro right">
+      </div>
+    </div>
+    <div class="row center-align">
+      <!-- Botón para enviar el formulario -->
+      <button class="btn waves-effect waves-light green logout-button" type="submit">
+        Registrarse
+      </button>
+      
+    </div><br>
+  </form>
+  <p class="center-align"style="font-size: 22px;">¿Ya tienes una cuenta? <a href="\PASTI\php/1-index.php">Inicia sesión aquí</a></p>
+</div>
+<br><br>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems,{classes:'browser-default'});
+    // Ocultar opciones seleccionadas en el dropdown
+    instances.forEach(function(instance) {
+      instance.input.addEventListener('change', function() {
+        var selectedOption = instance.dropdownOptions.querySelector('.selected');
+        if (selectedOption) {
+          selectedOption.style.display = 'none';
+        }
+      });
+    });
+    
+  // Validación de contraseña
+  var passwordInput = document.getElementById('password');
+    var confirmPasswordInput = document.getElementById('confirm-password');
+
+    confirmPasswordInput.addEventListener('input', function() {
+      if (confirmPasswordInput.value !== passwordInput.value) {
+        confirmPasswordInput.setCustomValidity('Las contraseñas no coinciden');
+      } else {
+        confirmPasswordInput.setCustomValidity('');
+      }
+    });
+
+    // Restablecer la validación al cambiar la contraseña principal
+    passwordInput.addEventListener('input', function() {
+      confirmPasswordInput.setCustomValidity('');
+    });
+
+
+  });
+</script>
+</body>
+</html>

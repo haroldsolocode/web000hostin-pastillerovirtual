@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Recuperar Contraseña</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+<body>
+
+<div class="container">
+  <div class="center-align">
+    <img src="/PASTI/imagenes/pastilleroVirtualrecortado.jpeg" alt="Logo" class="logo" >
+    <style>
+      .logo {
+        max-width: 350px;
+        margin-top: 20px;
+      }
+    </style>
+  </div>
+  <h1 class="center-align">Recuperar Contraseña</h1>
+  
+  <form class="col s12">
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="email" type="email" class="validate" required>
+        <label for="email">Correo electrónico</label>
+      </div>
+    </div>
+  </div>
+  <div class="row center-align">
+    <!-- Utilizar la función de toast de Materialize para mostrar un mensaje -->
+    <button class="btn waves-effect waves-light green logout-button" type="button" 
+    onclick="M.toast({html: 'se envio link de recuperacion a su correo'})"
+    style="color: inherit; text-decoration: none;">
+      Enviar Correo de Recuperación</button>
+  </div>
+  </form>
+  <p class="center-align"><a href="\PASTI\php/1-index.php">Volver a Iniciar Sesión</a></p>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>

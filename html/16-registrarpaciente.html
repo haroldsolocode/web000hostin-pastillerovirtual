@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Define la codificación de caracteres como UTF-8. -->
+    <title>Registrar Nuevo Paciente</title>
+    <!-- Establece el título de la página en la barra de título del navegador. -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <!-- Enlaza la hoja de estilos CSS de Materialize. -->
+    <style>
+      h2 {
+        font-size: 70px;
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col s6">
+          <br />
+          <br />
+          <h2>Registrar Nuevo Paciente</h2>
+          <!-- Título "Registrar Nuevo Paciente" con estilos. -->
+          <form id="patient-form">
+            <div class="input-field">
+              <label for="nombre-paciente">Nombre del Paciente</label>
+              <input type="text" id="nombre-paciente" required />
+              <!-- Campo de entrada para el nombre del paciente. -->
+            </div>
+            <div class="input-field">
+              <label for="edad-paciente">Edad del Paciente</label>
+              <input type="number" id="edad-paciente" required />
+              <!-- Campo de entrada para la edad del paciente. -->
+            </div>
+            <div class="input-field">
+              <label for="genero-paciente">Sexo del Paciente</label><br />
+              <select id="genero-paciente" required>
+                <!-- Selector para el género del paciente. -->
+                <option value="" disabled selected>Selecciona el Sexo</option>
+                <option value="masculino">Masculino</option>
+                <option value="femenino">Femenino</option>
+              </select>
+            </div>
+            <div class="input-field">
+              <label for="diagnostico-paciente">Diagnóstico</label>
+              <textarea
+                id="diagnostico-paciente"
+                class="materialize-textarea"
+                required
+              ></textarea>
+              <!-- Campo de entrada para el diagnóstico del paciente. -->
+            </div>
+            <div class="input-field">
+              <label for="tratamientos-paciente">Tratamientos</label>
+              <textarea
+                id="tratamientos-paciente"
+                class="materialize-textarea"
+                required
+              ></textarea>
+              <!-- Campo de entrada para los tratamientos del paciente. -->
+            </div>
+            <button type="submit" class="btn waves-effect waves-light green">
+              Registrar Paciente
+            </button>
+            <!-- Botón para registrar al paciente. -->
+            <div class="back-button right-align">
+              <a
+                href="/PASTI/html/12-perfilcuidador.html"
+                class="waves-effect waves-light btn green"
+                >Atrás</a
+              >
+              <!-- Enlace para volver atrás a la página del perfil del cuidador. -->
+            </div>
+          </form>
+        </div>
+        <div class="col s6">
+          <br />
+          <img
+            src="/PASTI/imagenes/pastilleroVirtualrecortado.jpeg"
+            alt=""
+            class="responsive-img right"
+          />
+          <img
+            src="/PASTI/imagenes/paciente2.png"
+            alt=""
+            class="responsive-img right"
+          />
+        </div>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- Incluye la biblioteca JavaScript de Materialize para la funcionalidad. -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const patientForm = document.getElementById("patient-form");
+        M.FormSelect.init(document.getElementById("genero-paciente"));
+
+        patientForm.addEventListener("submit", function (event) {
+          event.preventDefault();
+          const nombrePaciente =
+            document.getElementById("nombre-paciente").value;
+          const edadPaciente = document.getElementById("edad-paciente").value;
+          const generoPaciente =
+            document.getElementById("genero-paciente").value;
+          const diagnosticoPaciente = document.getElementById(
+            "diagnostico-paciente"
+          ).value;
+          const tratamientosPaciente = document.getElementById(
+            "tratamientos-paciente"
+          ).value;
+
+          const patientData = `
+                  Nombre del Paciente: ${nombrePaciente}
+                  Edad: ${edadPaciente}
+                  Género: ${generoPaciente}
+                  Diagnóstico: ${diagnosticoPaciente}
+                  Tratamientos: ${tratamientosPaciente}
+                `;
+          alert(patientData);
+        });
+      });
+    </script>
+  </body>
+</html>

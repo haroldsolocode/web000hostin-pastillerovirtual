@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Pastillero Virtual - Cuidador</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <style>
+    /* ... (otros estilos css) ... */
+    
+    h2  {
+      font-size: 40px;
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+    }
+    /* ... (boton crear pacientes) ... */
+    .center-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 35vh;
+    }
+    
+    
+    .logo-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .logo {
+      max-width: 100%;
+      margin-top: 20px;
+    }
+    
+    .logout-button {
+      background-color: green;
+      color: white;
+      margin-top: 10px;
+    }
+    
+    .profile-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 20px;
+      padding: 10px 0;
+    }
+    
+    .profile-button {
+      color: white;
+      margin: 5px;
+    }
+    
+    /* ... (otros estilos) ... */
+    
+    .green-divider {
+      width: 100%;
+      height: auto;
+      background-color: #00BF63;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    
+    .divider-image {
+      max-width: 20%;
+      height: auto;
+      margin: 20px 0;
+    }
+    
+    .divider-message {
+      font-size: 18px;
+      color: white;
+      margin: 20px 0;
+    }
+    
+    .search-bar {
+      margin-top: 10px;
+      display: flex;
+      justify-content: center; /* Centra el formulario en dispositivos móviles */
+    }
+    
+    #search {
+      width: 80%; /* Hace el campo de búsqueda más ancho en dispositivos móviles */
+      padding: 10px;
+      border: 1px solid #00BF63;
+      border-radius: 5px;
+    }
+
+    .profile-category-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+      padding: 20px 0;
+    }
+    
+    .profile-category-button {
+      color: black;
+      background-color: #f2f6f4;
+      text-align: center;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 16px;
+      margin: 10px;
+      flex: 1;
+      border-radius: 10px; /* Ajusta la forma de los botones */
+      max-width: 150px;
+      overflow: hidden;
+    }
+
+    .profile-button-image {
+      max-width: 60%;
+      height: auto;
+      margin-bottom: 10px;
+    }
+
+    .back-button {
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+ 
+  <div class="container">
+    <div class="logo-container">
+      <img src="/PASTI/imagenes/pastilleroVirtualrecortado.jpeg" alt="Logo" class="logo">
+      <a href="/PASTI\php/1-index.php" class="btn waves-effect waves-light green logout-button">Cerrar Sesión</a>
+    </div>
+    
+    <div class="profile-buttons">
+      <a href="/PASTI/html/2-mision.html" class="btn profile-button">Misión</a>
+      <a href="/PASTI/html/3-vision.html" class="btn profile-button">Visión</a>
+      <a href="/PASTI/html/4-contacto.html" class="btn profile-button">Contacto</a>
+      <a href="/PASTI/html/5-ayuda.html" class="btn profile-button">Ayuda</a>
+      <a href="/PASTI/html/6-blog.html" class="btn profile-button">Blog</a>
+    </div>
+    
+    <div class="green-divider">
+      <img src="/PASTI/imagenes/cuidadorIA.jpeg" alt="Imagen en franja verde" class="divider-image">
+      <div class="divider-message">¡Hola, Cuidador [Nombre del Cuidador]!  
+        Simplifica el seguimiento de tratamientos y cuidados para tus seres queridos o pacientes.
+         ¡Cuidar es más fácil con nosotros!</div>
+    </div><br><br>
+    <h2>Buscar paciente</h2>
+    <div class="search-bar">
+      <form action="#" method="GET"> <!-- Replace "#" with the appropriate action URL -->
+        <input type="text" id="search" name="search" placeholder="Buscar pacientes...">
+        <button type="submit" class="btn waves-effect waves-light green">Buscar</button>
+      </form>
+    </div><br><br>
+        
+    <div class="profile-category-buttons center-content"> <!-- Agrega la clase "center-content" aquí -->
+      <div class="col s12">
+        <a href="/PASTI/html/16-registrarpaciente.html" class="profile-category-button">
+          <img src="/PASTI/imagenes/agregar.png" alt="Imagen 4" class="profile-button-image">
+          <span style="font-size: 16px;" >Generar paciente</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="back-button">
+      <a href="/PASTI\php/9-bienvenida.php" class="waves-effect waves-light btn green" >Atrás</a>
+    </div><br><br>
+  </div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>
